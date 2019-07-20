@@ -1,3 +1,6 @@
+c Copyright 2019 
+c Hender Rivera
+
 c ************** algoritmo genetico *********************
 c       implicit double precision (a-h,o-z)
         implicit none 
