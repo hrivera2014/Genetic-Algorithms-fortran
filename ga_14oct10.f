@@ -2,25 +2,37 @@ c Copyright 2019
 c Hender Rivera
 
 c ************** algoritmo genetico *********************
+c ************** Genetic Algorithms *********************
+
 c       implicit double precision (a-h,o-z)
         implicit none 
         integer ipoblacion,ilong_cromo,i,igen,ilong_gen,ib
+        c poblacion = population 
         integer igeneracion,is,j,flag(40,2) 
+        c generacion = generation
         character*4 codigo(14)
+        c código = code
         character*200 cromo(40),cromo_temporal,padres(2)
+        c padres = parents
         character*200 swap
         character*50 expre_algebra,parser 
         real*8 fitnes(40),sum_fitnes,tot_fitnes,inc_fitnes
         real*8 xr,rebanada
+        c rebanada = slice
         real*8 evaluar,comparacion
+        c evaluar = assess, comparacion = comparison
         real*8 dec,mut,crossover_rate
         real*8 target_number,fit_tot 
         integer*4 iran,indice(2)
         parameter (target_number=23.) 
-c       ipoblacion debe ser un numero par        
+
+c       ipoblacion debe ser un numero par
+c       ipoblacion need to be a even number
+
         parameter (ipoblacion=40,ilong_cromo=200,ilong_gen=4)
         crossover_rate=0.7
         mut=0.001
+c Random seed
 c semilla aleatoria        
         iran=12572
 c        iran=17572
@@ -29,31 +41,36 @@ c        iran=17572
         open(unit=37,file='fitnes2.dat')
 
 c               Codificacion de los digitos
+c               Digits coding
 
-        codigo(1) = '0000' !cero
-        codigo(2) = '0001' !uno
-        codigo(3) = '0010' !dos
-        codigo(4) = '0011' !tres
-        codigo(5) = '0100' !cuatro
-        codigo(6) = '0101' !cinco
-        codigo(7) = '0110' !seis
-        codigo(8) = '0111' !siete 
-        codigo(9) = '1000' !ocho
-        codigo(10) = '1001' !nueve
+        codigo(1) = '0000' !cero, zero
+        codigo(2) = '0001' !uno, one
+        codigo(3) = '0010' !dos, two
+        codigo(4) = '0011' !tres, three 
+        codigo(5) = '0100' !cuatro, four
+        codigo(6) = '0101' !cinco, five
+        codigo(7) = '0110' !seis, six
+        codigo(8) = '0111' !siete, seven
+        codigo(9) = '1000' !ocho, eight
+        codigo(10) = '1001' !nueve, nine
         codigo(11) = '1010' ! +
         codigo(12) = '1011' ! -
         codigo(13) = '1100' ! *
         codigo(14) = '1101' ! /
 
 c inicio de los cromosomas
+c chromosomes inicial setting
+
         do i=1,ipoblacion
         cromo(i)=''
         indice(i)=0
         enddo 
 
-c Se genera la poblacion aleatoria        
+c Se genera la poblacion aleatoria
+c Generate the random population
+
         do i=1,ipoblacion
-                do j=1,50 ! 1 hasta la longitud del cromosoma/4
+                do j=1,50 ! 1 hasta la longitud del cromosoma/4, 1 up to chromosome size over 4
                 call rnd001(xr,iran,14)
                 igen=xr+1
                 cromo(i)(j*4-3:j*4) = codigo(igen)
@@ -61,6 +78,7 @@ c Se genera la poblacion aleatoria
         enddo
 
 c *********   inicio del ciclo de evolucion  ************
+c *********   Evolution cicle start *********************
 
  222    continue     
  
@@ -88,10 +106,14 @@ c        endif
 c        write(6,*)
 c     + igeneracion,(cromo(i),(parser(cromo(i))),fitnes(i),i=1,1)
 
+c Rullete
+c The parents are taken from the first generation among the best
+c fitted individuals.
+
 c Se escojen los padres a partir de la primera generacion       
-c entre los individuos que mejor se adaptan        
+c entre los individuos que mejor se adaptan
 c        Ruleta    
-        
+
         indice(1)=0
         indice(2)=0
 
@@ -127,7 +149,7 @@ c       Crossover
                 padres(1)(igen*4-3:200)=padres(2)(igen*4-3:200)
                 padres(2)(igen*4-3:200)=swap
         endif
-
+c       Mutation
 c       Mutacion
 
         do ib=1,2
@@ -143,6 +165,7 @@ c       Mutacion
         enddo
         enddo
 
+c       The parents are replaced by their offsprings.
 c       Se sustituyen los padre por hijos        
 
         do i=1,2
@@ -151,7 +174,9 @@ c       Se sustituyen los padre por hijos
         
         igeneracion=igeneracion+1
 
-c Verifica si la mayoria de individuos de la poblacion han convergido        
+c Checkout if the majority of individuals in the population has converge.
+c Verifica si la mayoria de individuos de la poblacion han convergido      
+
         fit_tot=0
         do i=1,40
         cromo_temporal=cromo(i)
@@ -164,21 +189,23 @@ c Verifica si la mayoria de individuos de la poblacion han convergido
 
         goto 222 
 
-
-
 c 444    format(1x,i2,5(f9.3,1x))
 c 22     format(1x,i6,1x,3(a200,1x))
 c 20     format(1x,i6,1x,40(f9.3,1x))
 c 33     format(1x,i6,1x,f9.3)
 
 c---------------fin del programa  -------------
+c--------------- End of the program -----------
+
  333    continue
         stop
         end
 
 
 c --------- funciones y subrutinas --------------------
+c --------- Subroutine and functions ------------------
 
+c -------  Decimal function 2 -------------------
 c ------------- funcion decimal 2 ----------------
         
         function dec2(temp)
@@ -207,6 +234,7 @@ c        write(*,*) 'stop'
         
         end
 
+c ------ Function for assess the parser that coding the individual.
 c ------ Funcion de calculo del parser que codifica el sujeto --------
 
         function parser(cromo_temporal)
@@ -251,6 +279,7 @@ c       si no es operador o numero
         goto 100
         endif
 
+c Search until finds the first number.
 c busca hasta que encuentra el primer numero.
 
         if(icontador_deescojidos.eq.0.and.decimal.le.9) then
@@ -262,7 +291,7 @@ c busca hasta que encuentra el primer numero.
         goto 100
         endif
         
-
+c       An operator preceded for a number 5/
 c       un operador antecedido de numero    5/
 
         if(decimal.gt.9.and.decimal.lt.14.and.bufer.le.9) 
@@ -274,8 +303,9 @@ c       un operador antecedido de numero    5/
         expresion_algebra(k:k)=algebra(temp)
         goto 100
         endif
-        
-c       un numero antecedido de operador    /4
+
+c       A number preceded fot a operator /4
+c       un numero antecedido de operador /4
 
          if(decimal.le.9.and.bufer.gt.9.and.bufer.lt.14) then
                 bufer=decimal
@@ -286,12 +316,16 @@ c       un numero antecedido de operador    /4
          goto 100
          endif
 
-c       un numero antecedido de numero        
+c       A number preceded for a number
+c       un numero antecedido de numero
+
         if(decimal.le.9.and.bufer.le.9) then
         goto 100
         endif
 
+c       An operator preceded of an operator
 c       un operador antecedido de operador       
+
         if(decimal.gt.9.and.bufer.lt.14.and.bufer.gt.9) then
         goto 100
         endif
@@ -307,6 +341,7 @@ c       un operador antecedido de operador
         parser=expresion_algebra
         end
         
+c ----------- Evaluation of algebraic expresión ------------------
 c------------ funcion que evalua la expresion algebraica  --------
 
         function evaluar(expre_algebra)
@@ -372,6 +407,7 @@ c------------ funcion que evalua la expresion algebraica  --------
         end
 
 c **************** funciones llamadas por funciones **********
+c **************** function called by functions **************
 
         function algebra(temp)
         implicit none
