@@ -34,7 +34,7 @@ c       implicit double precision (a-h,o-z)
         parameter (target_number=23.) 
 
 c       ipoblacion debe ser un numero par
-c       ipoblacion need to be a even number
+c       ipoblacion need to be an even number
 
         parameter (ipoblacion=40,ilong_cromo=200,ilong_gen=4)
         crossover_rate=0.7
@@ -66,7 +66,7 @@ c               Digits coding
         codigo(14) = '1101' ! /
 
 c inicio de los cromosomas
-c chromosomes inicial setting
+c chromosomes initial setting
 
         do i=1,ipoblacion
         cromo(i)=''
