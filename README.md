@@ -111,19 +111,33 @@ First we need to encode a possible solution as a string of bits… a chromosome.
 Four bits are required to represent the range of characters used:
 
 0:         0000
+
 1:         0001
+
 2:         0010
+
 3:         0011
+
 4:         0100
+
 5:         0101
+
 6:         0110
+
 7:         0111
+
 8:         1000
+
 9:         1001
+
 +:         1010
+
 -:          1011
+
 *:          1100
+
 /:          1101
+
 
 The above show all the different genes required to encode the problem as described. The possible genes 1110 & 1111 will remain unused and will be ignored by the algorithm if encountered.
 
