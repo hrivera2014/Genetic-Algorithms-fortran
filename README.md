@@ -2,7 +2,7 @@
 Based on the tutorial at:
 http://www.ai-junkie.com/ga/intro/gat1.html
 
-Here a extract.
+Here an extract.
 
 Genetic Algorithms in Plain English
 
