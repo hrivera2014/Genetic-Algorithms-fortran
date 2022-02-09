@@ -6,7 +6,7 @@ Here an extract.
 
 Genetic Algorithms in Plain English
 
-Introduction
+## Introduction
 
 The aim of this tutorial is to explain genetic algorithms sufficiently for you to be able to use them in your own projects. This is a stripped-down to-the-bare-essentials type of tutorial. I'm not going to go into a great deal of depth and I'm not going to scare those of you with math anxiety by throwing evil equations at you every few sentences. In fact, I'm not going to throw any nasty equations at you at all! Not in this particular tutorial anyway... <smile>
 
@@ -14,7 +14,7 @@ This tutorial is designed to be read through twice... so don't worry if little o
 (A reader, Daniel, has kindly translated this tutorial into German. You can find it here.)
 (Another reader, David Lewin, has translated the tutorial into French. You can find it here.)
 
-First, a Biology Lesson
+### First, a Biology Lesson
 
 Every organism has a set of rules, a blueprint so to speak, describing how that organism is built up from the tiny building blocks of life. These rules are encoded in the genes of an organism, which in turn are connected together into long strings called chromosomes. Each gene represents a specific trait of the organism, like eye colour or hair colour, and has several different settings. For example, the settings for a hair colour gene may be blonde, black or auburn. These genes and their settings are usually referred to as an organism's genotype. The physical expression of the genotype - the organism itself - is called the phenotype.
 
@@ -42,7 +42,7 @@ And so on. And so on...
 
 Genetic Algorithms are a way of solving problems by mimicking the same processes mother nature uses. They use the same combination of selection, recombination and mutation to evolve a solution to a problem. Neat huh? Turn the page to find out exactly how it's done.
 
- The Genetic Algorithm - a brief overview
+ ## The Genetic Algorithm - a brief overview
 
 Before you can use a genetic algorithm to solve a problem, a way must be found of encoding any potential solution to the problem. This could be as a string of real numbers or, as is more typically the case, a binary bit string. I will refer to this bit string from now on as the chromosome. A typical chromosome may look like this:
 
@@ -62,13 +62,13 @@ At the beginning of a run of a genetic algorithm a large population of random ch
 
     Repeat step 2, 3, 4 until a new population of N members has been created.
 
-Tell me about Roulette Wheel selection
+### Tell me about Roulette Wheel selection
 
 This is a way of choosing members from the population of chromosomes in a way that is proportional to their fitness. It does not guarantee that the fittest member goes through to the next generation, merely that it has a very good chance of doing so. It works like this:
 
 Imagine that the population’s total fitness score is represented by a pie chart, or roulette wheel. Now you assign a slice of the wheel to each member of the population. The size of the slice is proportional to that chromosomes fitness score. i.e. the fitter a member is the bigger the slice of pie it gets. Now, to choose a chromosome all you have to do is spin the ball and grab the chromosome at the point it stops.
  
-What's the Crossover Rate?
+### What's the Crossover Rate?
 
 This is simply the chance that two chromosomes will swap their bits. A good value for this is around 0.7.  Crossover is performed by selecting a random gene along the length of the chromosomes and swapping all the genes after that point.
 
@@ -86,13 +86,13 @@ so the above become:
 
 01010001010010010
  
-What's the Mutation Rate?
+### What's the Mutation Rate?
 
 This is the chance that a bit within a chromosome will be flipped (0 becomes 1, 1 becomes 0). This is usually a very low value for binary encoded genes, say 0.001
 
 So whenever chromosomes are chosen from the population the algorithm first checks to see if crossover should be applied and then the algorithm iterates down the length of each chromosome mutating the bits if applicable.
 
-From Theory to Practice
+## From Theory to Practice
 
 To hammer home the theory you've just learnt let's look at a simple problem:
 
@@ -104,7 +104,7 @@ If  75.5 is the chosen number then 5/2+9*7-5 would be a possible solution.
 
 Please make sure you understand the problem before moving on. I know it's a little contrived but I've used it because it's very simple.
 
-Stage 1: Encoding
+### Stage 1: Encoding
 
 First we need to encode a possible solution as a string of bits… a chromosome. So how do we do this? Well, first we need to represent all the different characters available to the solution... that is 0 through 9 and +, -, * and /. This will represent a gene. Each chromosome will be made up of several genes.
 
@@ -167,7 +167,7 @@ Which is meaningless in the context of this problem! Therefore, when decoding, t
 
 2   +   7
  
-Stage 2: Deciding on a Fitness Function
+### Stage 2: Deciding on a Fitness Function
 
 This can be the most difficult part of the algorithm to figure out. It really depends on what problem you are trying to solve but the general idea is to give a higher fitness score the closer a chromosome comes to solving the problem.  With regards to the simple project I'm describing here, a fitness score can be assigned that's inversely proportional to the difference between the solution and the value a decoded chromosome represents.
 
@@ -179,7 +179,7 @@ has a fitness score of 1/(42-23) or 1/19.
 
 As it stands, if a solution is found, a divide by zero error would occur as the fitness would be 1/(42-42). This is not a problem however as we have found what we were looking for... a solution. Therefore a test can be made for this occurrence and the algorithm halted accordingly.
  
-Stage 3: Getting down to business
+### Stage 3: Getting down to business
 
 First, please read this tutorial again.
 
@@ -189,11 +189,11 @@ Note: The code given will parse a chromosome bit string into the values we have 
 
 (Delphi code submitted by Asbjørn can be found here and Java code submitted by Tim Roberts can be found here)
 
-Last Words
+### Last Words
 
 I hope this tutorial has helped you get to grips with the basics of genetic algorithms. Please note that I have only covered the very basics here. If you have found genetic algorithms interesting then there is much more for you to learn. There are different selection techniques to use, different crossover and mutation operators to try and more esoteric stuff like fitness sharing and speciation to fool around with. All or some of these techniques will improve the performance of your genetic algorithms considerably.
 
-Stuff to Try 
+### Stuff to Try 
 
 If you have succeeded in coding a genetic algorithm to solve the problem given in the tutorial, try having a go at the following more difficult problem:
 
