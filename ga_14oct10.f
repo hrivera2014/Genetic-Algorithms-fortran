@@ -8,7 +8,6 @@ c created universe". he announced.
 c Turing's Cathedral. The origins of the digital universe. George Dyson.
 c Pantheon Books. New York. 
 
-Shield: [![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
 c Hender Rivera
 
 c ************** algoritmo genetico *********************
