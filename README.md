@@ -52,15 +52,15 @@ Before you can use a genetic algorithm to solve a problem, a way must be found o
 
 At the beginning of a run of a genetic algorithm a large population of random chromosomes is created. Each one, when decoded will represent a different solution to the problem at hand. Let's say there are N chromosomes in the initial population. Then, the following steps are repeated until a solution is found
 
-Test each chromosome to see how good it is at solving the problem at hand and assign a fitness score accordingly. The fitness score is a measure of how good that chromosome is at solving the problem to hand.
+* Test each chromosome to see how good it is at solving the problem at hand and assign a fitness score accordingly. The fitness score is a measure of how good that chromosome is at solving the problem to hand.
 
-Select two members from the current population. The chance of being selected is proportional to the chromosomes fitness. Roulette wheel selection is a commonly used method.
+* Select two members from the current population. The chance of being selected is proportional to the chromosomes fitness. Roulette wheel selection is a commonly used method.
 
-Dependent on the crossover rate crossover the bits from each chosen chromosome at a randomly chosen point.
+* Dependent on the crossover rate crossover the bits from each chosen chromosome at a randomly chosen point.
 
-Step through the chosen chromosomes bits and flip dependent on the mutation rate.
+* Step through the chosen chromosomes bits and flip dependent on the mutation rate.
 
-Repeat step 2, 3, 4 until a new population of N members has been created.
+* Repeat step 2, 3, 4 until a new population of N members has been created.
 
 ### Tell me about Roulette Wheel selection
 
