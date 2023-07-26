@@ -46,7 +46,7 @@ Genetic Algorithms are a way of solving problems by mimicking the same processes
 
 Before you can use a genetic algorithm to solve a problem, a way must be found of encoding any potential solution to the problem. This could be as a string of real numbers or, as is more typically the case, a binary bit string. I will refer to this bit string from now on as the chromosome. A typical chromosome may look like this:
 
-10010101110101001010011101101110111111101
+`10010101110101001010011101101110111111101`
 
 (Don't worry if non of this is making sense to you at the moment, it will all start to become clear shortly. For now, just relax and go with the flow.)
 
@@ -74,17 +74,18 @@ This is simply the chance that two chromosomes will swap their bits. A good valu
 
 e.g. Given two chromosomes
 
-10001001110010010
+$${\color{green}10001001110010010}$$
 
-01010001001000011
+$${\color{red}01010001001000011}$$
+
 
 Choose a random bit along the length, say at position 9, and swap all the bits after that point
 
 so the above become:
+$${\color{green}100010011}{\color{red}01000011}$$
 
-10001001101000011
+$${\color{red}010100010}{\color{green}10010010}$$
 
-01010001010010010
  
 ### What's the Mutation Rate?
 
