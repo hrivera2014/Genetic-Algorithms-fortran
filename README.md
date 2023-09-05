@@ -1,4 +1,4 @@
-Licence [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+License [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
 # Genetic Algorithms fortran77
 Based on the tutorial at:
 http://www.ai-junkie.com/ga/intro/gat1.html
