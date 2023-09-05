@@ -1,3 +1,4 @@
+c CC BY-SA 4.0
 c At 10:38 P.M. on March 3, 1953, in a one-story brick building at the end of 
 c Olden Lane in Princeton, New Jersey, Italian Norweigian mathemathical biologist 
 c Nils Aall Barriceli inoculate a 5 kilobytes digital universe with random
