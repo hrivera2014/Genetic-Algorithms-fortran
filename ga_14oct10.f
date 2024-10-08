@@ -29,7 +29,7 @@ c padres = parents
       real*8 fitnes(40),sum_fitnes,tot_fitnes,inc_fitnes
       real*8 xr,rebanada
 c rebanada = slice
-      real*4 evaluar,comparacion
+      real*8 evaluar,comparacion
 c evaluar = assess, comparacion = comparison
       real*8 dec,mut,crossover_rate
       real*8 target_number,fit_tot 
@@ -358,7 +358,7 @@ c------------ funcion que evalua la expresion algebraica  --------
       function evaluar(expre_algebra)
         implicit none
         character*50 expre_algebra
-        real evaluar,evaluar2
+        real*8 evaluar,evaluar2
         character*1 parser_temporal,c
         integer i,k,selector,bufer(50)
 
