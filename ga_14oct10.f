@@ -73,7 +73,7 @@ c chromosomes initial setting
 
       do i=1,ipoblacion
         cromo(i)=''
-        indice(i)=0
+        indice(1)=0
       enddo 
 
 c Se genera la poblacion aleatoria
