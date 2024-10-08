@@ -29,7 +29,7 @@ c padres = parents
       real*8 fitnes(40),sum_fitnes,tot_fitnes,inc_fitnes
       real*8 xr,rebanada
 c rebanada = slice
-      real*8 evaluar,comparacion
+      real*4 evaluar,comparacion
 c evaluar = assess, comparacion = comparison
       real*8 dec,mut,crossover_rate
       real*8 target_number,fit_tot 
@@ -113,7 +113,7 @@ c        endif
 
       write(36,*)
      + igeneracion,(evaluar(parser(cromo(i))),i=1,40)
-c        write(6,*)
+c      write(6,*)
 c     + igeneracion,(cromo(i),(parser(cromo(i))),fitnes(i),i=1,1)
 
 c Rullete
@@ -124,8 +124,8 @@ c Ruleta
 c Se escojen los padres a partir de la primera generacion       
 c entre los individuos que mejor se adaptan
 
-     indice(1)=0
-     indice(2)=0
+      indice(1)=0
+      indice(2)=0
 
  555  call rnd001(xr,iran,40)
       is=xr+1
@@ -149,7 +149,7 @@ c entre los individuos que mejor se adaptan
       endif 
         
 c Crossover        
-        
+
       swap=''
       call rnd001(xr,iran,1)
       if(xr.lt.crossover_rate) then
@@ -159,6 +159,7 @@ c Crossover
         padres(1)(igen*4-3:200)=padres(2)(igen*4-3:200)
         padres(2)(igen*4-3:200)=swap
       endif
+
 c Mutation
 c Mutacion
 
